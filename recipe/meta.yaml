@@ -10,20 +10,20 @@ source:
   sha256: 650c24ea133f1fef460f0ad6a2bf227d6584c88eb48ac945b5e058f545f64751
 
 build:
-  number: 0
+  number: 1
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv
 
 requirements:
   host:
     - pip
-    - python >=3.6
+    - python {{ python_min }}
   run:
     - folium
     - ipyleaflet
     - pandas
     - pyshp
-    - python >=3.6
+    - python >={{ python_min }}
     - ipyfilechooser
     - ipywidgets
     - geopandas
@@ -36,6 +36,8 @@ requirements:
     - numpy
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - hagerstrand
 
